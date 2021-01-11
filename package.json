@@ -1,0 +1,31 @@
+{
+  "name": "easyform",
+  "version": "0.0.1",
+  "description": "a simple tool to quickly create forms",
+  "main": "index.tsx",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yeyujingren/easyForm.git"
+  },
+  "keywords": [
+    "tools",
+    "quickly",
+    "create",
+    "form",
+    "typescript",
+    "react",
+    "formily"
+  ],
+  "author": "yeyujingren",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yeyujingren/easyForm/issues"
+  },
+  "homepage": "https://github.com/yeyujingren/easyForm#readme"
+}
