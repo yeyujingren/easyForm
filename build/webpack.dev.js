@@ -1,6 +1,7 @@
 const path = require('path');
 const WebpackConfig = require('./webpack.base');
 const { merge } = require('webpack-merge');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = merge(WebpackConfig, {
   mode: 'development',
@@ -39,6 +40,7 @@ module.exports = merge(WebpackConfig, {
     disableHostCheck: true
   },
   plugins: [
-    // new Webpack.HotModuleReplacementPlugin()
+    // 开启 BundleAnalyzerPlugin
+    new BundleAnalyzerPlugin()
   ]
 })
