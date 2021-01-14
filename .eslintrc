@@ -1,0 +1,54 @@
+{
+  "extends": ["airbnb", "prettier", "prettier/react"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["react-hooks", "@typescript-eslint"],
+  "rules": {
+    "prefer-object-spread": "off",
+    "consistent-return": "off",
+    "no-lonely-if": "off",
+    "class-methods-use-this": "off",
+    "dot-notation": "off",
+    "no-console": "off",
+    "no-alert": "off",
+    "global-require": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "react/prefer-stateless-function": "off",
+    "react/forbid-prop-types": "off",
+    "react/sort-comp": "off",
+    "react/no-did-update-set-state": "off",
+    "react/static-property-placement": "off",
+    "react/self-closing-comp": "off",
+    "react/no-find-dom-node": "off",
+    "import/no-unresolved": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "import/extensions": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-plusplus": "off",
+    "no-underscore-dangle": "off",
+    "no-unused-vars": "off",
+    // 扩展文件后缀eslint
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "indent": [
+      "warn",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "no-nested-ternary": "off",
+    "react/no-danger": "off",
+    "import/order": "off",
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+    "localStorage": true,
+    "sessionStorage": true,
+    "CookieStorage": true,
+    "navigator": true,
+    "location": true
+  }
+}
