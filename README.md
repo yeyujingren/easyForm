@@ -3,6 +3,7 @@
 node --trace-deprecation node_modules/webpack/bin/webpack.js
 ```
 
+```
 ├── README.md 
 ├── build // webpack配置相关
 ├── doc // 项目规范要求相关
@@ -20,3 +21,4 @@ node --trace-deprecation node_modules/webpack/bin/webpack.js
 │   └── utils // 工具包
 ├── test  // 单元测试
 └── tsconfig.json
+```
