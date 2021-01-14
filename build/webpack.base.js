@@ -1,18 +1,10 @@
 const path = require("path");
 const os = require("os");
-// const px2rem = require("postcss-px2rem");
-// const flexFixs = require('postcss-flexbugs-fixes');
-// const HappyPack = require('happypack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const Webpack = require('webpack');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
-
-// 打包使用的共享进程池，用于加快打包速度
-// const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length});
 
 module.exports = {
   entry: {
@@ -67,22 +59,6 @@ module.exports = {
               }
             }
           },
-          // {
-          //   loader: 'postcss-loader',
-          //   options: {
-          //     ident: "postcss",
-          //     // plugins: [require('autoprefixer')]
-          //     plugins: (ctx) => {
-          //       return [
-          //         flexFixs,
-          //         // fix antd-mobile v2.3.0 样式比之前版本减少一半问题.
-          //         px2rem({
-          //           remUnit: /antd-mobile/.test(ctx.resourcePath) ? 50 : 100
-          //         })
-          //       ]
-          //     }
-          //   }
-          // },
           {
             loader: 'less-loader',
             options: {
@@ -181,22 +157,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name]/[contenthash:8].bundle.css",
       chunkFilename: "[name]/[contenthash:8].chunk.css"
-    }),
-    // 使用happyPack开启多进程loader转换，加快打包时间
-    // new HappyPack({
-    //   id: 'happyBabel',
-    //   loaders: [
-    //     {
-    //       loader: 'babel-loader',
-    //       options: {
-    //         presets: [
-    //           ['@babel/preset-env', {modules: false}]
-    //         ],
-    //         cacheDirectory: true
-    //       }
-    //     }
-    //   ],
-    //   threadPool: happyThreadPool
-    // })
+    })
   ]
 }
