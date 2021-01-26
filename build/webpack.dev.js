@@ -6,6 +6,12 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 module.exports = merge(WebpackConfig, {
   mode: 'development',
   devtool: 'cheap-module-source-map',
+  // watch: true,
+  // watchOptions: {
+  //   aggregateTimeout: 200,
+  //   poll: 1000
+  // },
+
   devServer: {
     port: 9521,
     host: '0.0.0.0',

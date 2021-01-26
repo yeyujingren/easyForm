@@ -1,2 +1,7 @@
+import history, {customHistory} from './history';
+
 // 工具包出口
-export {};
+export {
+  history,
+  customHistory
+};
