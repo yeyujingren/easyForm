@@ -3,8 +3,6 @@ const os = require("os");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -40,10 +38,12 @@ module.exports = {
       {
         test: /\.css|\.less$/,
         use: [
-          'thread-loader',
           'style-loader',
           {
-            loader: MiniCssExtractPlugin.loader
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: false
+            }
           },
           {
             loader: 'css-loader',
@@ -51,20 +51,15 @@ module.exports = {
               sourceMap: true
             }
           },
-          {
-            loader: 'postcss-loader',
-            options: {
-              postcssOptions: {
-                  plugins: []
-              }
-            }
-          },
+          'postcss-loader',
           {
             loader: 'less-loader',
             options: {
               sourceMap: true,
-              strictMath: true,
-              noIeCompat: true
+              lessOptions: {
+                strictMath: true,
+                javascriptEnabled: true
+              }
             }
           }
         ]
@@ -136,19 +131,32 @@ module.exports = {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".less", ".json"]
   },
 
+  optimization: {
+    splitChunks: {
+      chunks: 'async',  // 定义要分割的代码为同步还是异步
+      minSize: 30000,  // 代码分割的文件大小最低要求，大于（字节）这个值才会单独拿出来打包
+      maxSize: 50000,   // 对分割的代码进行再次分割，此处将会按50kb对已经分割的文件再做分割（如果可以分割的话）
+      minChunks: 1, // 当一个模块陪引用多少次之后才会分割
+      maxAsyncRequests: 5,  // 同时加载的模块数最多为5
+      maxInitialRequests: 3,  // 入口文件最多只引入3各模块，多的话就合并
+      automaticNameDelimiter: '~',  // 连接符
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,  // 优先级，越大越高
+          filename: 'vendors.js' //  定义打包文件的文件名
+        },
+        default: {  // 如果引入文件不是来自于node_modules，则执行default配置
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true, // 模块复用
+          filename: 'common.js' //  定义打包文件的文件名
+        }
+      }
+    }
+  },
+
   plugins: [
-    new ForkTsCheckerWebpackPlugin({
-      // 将async设为false，可以阻止Webpack的emit以等待类型检查器/linter，并向Webpack的编译添加错误。
-      async: false
-    }),
-    // 将TypeScript类型检查错误以弹框提示
-    // 如果fork-ts-checker-webpack-plugin的async为false时可以不用
-    // 否则建议使用，以方便发现错误
-    new ForkTsCheckerNotifierWebpackPlugin({
-      title: 'TypeScript',
-      excludeWarnings: true,
-      skipSuccessful: true
-    }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html')

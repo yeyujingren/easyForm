@@ -12,20 +12,20 @@ class MyHistory {
    * 替换路由
    */
   public replace(path: any) {
-    this.history.replace(path)
+    this.history.replace(path);
   }
 
   /**
    * push
    */
   public push(path: any) {
-    this.history.push(path)
+    this.history.push(path);
   }
 
   /**
    * goBack
    */
-  public goBack(num: number = -1) {
+  public goBack(num = -1) {
     this.history.go(num);
   }
 }

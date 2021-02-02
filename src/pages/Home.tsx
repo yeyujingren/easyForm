@@ -4,16 +4,18 @@ import LeftNav from './Left';
 import FormCanvas from './FormCanvas';
 import RightDetail from './Right';
 
+import './Home.less';
+
 import {Layout} from 'antd';
 
-const {Sider, Header, Content} = Layout;
+const {Sider, Header, Content, Footer} = Layout;
 interface Props {
   [p: string]: string
 }
 
 const Home: React.FC<Props> = (prop) => {
   return (
-    <div>
+    <div className="wapper">
       <Layout>
         <Sider>
           <LeftNav/>
@@ -25,6 +27,9 @@ const Home: React.FC<Props> = (prop) => {
           <Content>
             <FormCanvas />
           </Content>
+          <Footer>
+            Footer
+          </Footer>
         </Layout>
         <Sider>
           <RightDetail />
@@ -32,6 +37,6 @@ const Home: React.FC<Props> = (prop) => {
       </Layout>
     </div>
   );
-}
+};
 
 export default Home;

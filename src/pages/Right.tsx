@@ -9,7 +9,7 @@ const RightDetail: React.FC<Props> = (props) => {
     <div>
       this is RightDetail
     </div>
-  )
-}
+  );
+};
 
 export default memo(RightDetail);

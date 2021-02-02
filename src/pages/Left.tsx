@@ -9,7 +9,7 @@ const LeftNav: React.FC<Props> = (props) => {
     <div>
       this is Left nav
     </div>
-  )
-}
+  );
+};
 
 export default memo(LeftNav);

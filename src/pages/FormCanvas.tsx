@@ -9,7 +9,7 @@ const FormCanvas: React.FC<Props> = (props) => {
     <div>
       this is Comtent
     </div>
-  )
-}
+  );
+};
 
 export default memo(FormCanvas);

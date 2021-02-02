@@ -1,6 +1,6 @@
 import React from 'react';
-import {Router, Route, RouteComponentProps, Switch} from 'react-router-dom';
-import {customHistory} from '@/utils'
+import {Router, Route, Switch} from 'react-router-dom';
+import {customHistory} from '@/utils';
 import Home from '@/pages/Home';
 
 interface RouterProps {
@@ -20,8 +20,8 @@ const ROUTER_CONFIG: RouterProps[] = [
 
 const RoutesConf = () => {
   const loadedRoutes = ROUTER_CONFIG.map(item => {
-    return <Route path={item.path} key={item.path} exact={item.exact} component={item.component} />
-  })
+    return <Route path={item.path} key={item.path} exact={item.exact} component={item.component} />;
+  });
 
   return (
     <Router history={customHistory}>
@@ -29,7 +29,7 @@ const RoutesConf = () => {
         {loadedRoutes}
       </Switch>
     </Router>
-  )
-}
+  );
+};
 
 export default RoutesConf;

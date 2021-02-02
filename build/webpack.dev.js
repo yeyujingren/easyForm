@@ -2,6 +2,8 @@ const path = require('path');
 const WebpackConfig = require('./webpack.base');
 const { merge } = require('webpack-merge');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ForkTsCheckerNotifierWebpackPlugin = require('fork-ts-checker-notifier-webpack-plugin');
 
 module.exports = merge(WebpackConfig, {
   mode: 'development',
@@ -47,6 +49,19 @@ module.exports = merge(WebpackConfig, {
   },
   plugins: [
     // 开启 BundleAnalyzerPlugin
-    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin(),
+    
+    new ForkTsCheckerWebpackPlugin({
+      // 将async设为false，可以阻止Webpack的emit以等待类型检查器/linter，并向Webpack的编译添加错误。
+      async: false
+    }),
+    // 将TypeScript类型检查错误以弹框提示
+    // 如果fork-ts-checker-webpack-plugin的async为false时可以不用
+    // 否则建议使用，以方便发现错误
+    new ForkTsCheckerNotifierWebpackPlugin({
+      title: 'TypeScript',
+      excludeWarnings: true,
+      skipSuccessful: true
+    }),
   ]
 })

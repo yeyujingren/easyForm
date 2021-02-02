@@ -9,8 +9,8 @@ const TopBar: React.FC<Props> = (props) => {
     <div>
       this is Top Bar
     </div>
-  )
-}
+  );
+};
 
 export default memo(TopBar);
 
