@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import './style/formCanvas.less';
 
 interface Props {
   [k: string]: any;
@@ -6,7 +7,7 @@ interface Props {
 
 const FormCanvas: React.FC<Props> = (props) => {
   return (
-    <div>
+    <div className="canvaseWapper">
       this is Comtent
     </div>
   );
